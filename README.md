@@ -1,1 +1,258 @@
 # Hw6
+//-Преобразование массива в зигзаг
+import java.util.Arrays
+
+fun main() {
+    val nums = intArrayOf(1, 3, 2, 7, 5, 6, 4)
+    nums.sort()
+    val result = IntArray(nums.size)
+    var smallPtr = 0
+    var largePtr = (nums.size + 1) / 2
+    for (i in 0 until nums.size) {
+        if (i % 2 == 0) {
+            result[i] = nums[smallPtr]
+            smallPtr++
+        } else {
+            result[i] = nums[largePtr]
+            largePtr++
+        }
+    }
+    println(Arrays.toString(result))
+}
+
+//-Слейте два отсортированных массива в один отсортированный массив
+import java.util.*
+
+fun main() {
+    val arr1 = intArrayOf(1, 3, 5, 7, 9)
+    val arr2 = intArrayOf(2, 4, 6, 8, 10)
+    val mergedArray = (arr1 + arr2).sorted().toIntArray()
+    println(Arrays.toString(mergedArray))
+}
+
+//-Найдите максимальное произведение трех чисел в массиве
+fun main() {
+    val nums = intArrayOf(5,5,4,2,2,2,3,2,1,2,3)
+    nums.sort()
+    val maxProduct = maxOf(nums[nums.size - 1] * nums[nums.size - 2] * nums[nums.size - 3])
+    println(maxProduct)
+}
+//-Переверните массив без использования встроенной функции reverse()
+fun main() {
+    val nums = intArrayOf(1, 2, 3, 4, 5)
+    val reversedNums = reverseArray(nums)
+    println(reversedNums.joinToString())
+}
+fun reverseArray(nums: IntArray): IntArray {
+    val reversed = IntArray(nums.size)
+    for (i in 0 until nums.size) {
+        reversed[i] = nums[nums.size - i - 1]
+    }
+    return reversed
+}
+}
+//-Реализуйте функцию, которая переворачивает массив
+fun main() {
+    val nums = intArrayOf(1, 2, 3, 4, 5)
+    val reversedNums = reverseArray(nums)
+    println(reversedNums.joinToString())
+}
+fun reverseArray(nums: IntArray): IntArray {
+    val reversed = IntArray(nums.size)
+    for (i in 0 until nums.size) {
+        reversed[i] = nums[nums.size - i - 1]
+    }
+    return reversed
+}
+
+
+//-Проверьте, содержит ли массив только четные числа.
+fun main() {
+    val nums = intArrayOf(2, 4, 6, 8, 90)
+    if (nums.all { it % 2 == 0 }) {
+        println("True")
+    } else {
+        println("False")
+    }
+}
+
+
+//-Найдите сумму всех элементов массива
+fun main() {
+    val nums = intArrayOf(1, 2, 3, 4, 5)
+    println(nums.sum())
+}
+
+
+//-Соедините два массива в один
+fun main() {
+    val nums1 = intArrayOf(1, 2, 3)
+    val nums2 = intArrayOf(4, 5, 6)
+    val both = nums1 + nums2
+    println(both.joinToString())
+}
+
+
+//-Переместите все нули в конец массива, не меняя порядок ненулевых элементов.
+fun main() {
+    val nums = intArrayOf(0, 3, 0, 5, 0, 4, 0)
+    var zero = intArrayOf()
+    for (num in nums) {
+        if (num == 0) {
+            zero += num
+        }
+    }
+    val nonZero = nums.filter { it != 0 }.toIntArray()
+    val ans = nonZero + zero
+    println(ans.joinToString())
+}
+
+
+//-Рассчитайте среднее значение элементов массива
+fun main() {
+    val array = arrayOf(5, 10, 15, 20, 25) 
+    var sum = 0
+    for (element in array) {
+        sum += element
+    }
+    val average = sum.toDouble() / array.size
+    println(average)
+}
+
+//-Найдите количество элементов массива, значение которых больше среднего арифметического всех элементов
+fun main() {
+    val array = arrayOf(5, 10, 15, 20, 25) 
+    var sum = 0
+    for (element in array) {
+        sum += element
+    }
+    val average = sum.toDouble() / array.size
+    println(average)
+    var count = 0
+    for (element in array) {
+        if (element > average) {
+            count++
+        }
+    }
+    println(count)
+}
+
+
+//-Найдите второе по величине число в массиве
+fun main() {
+    val nums = intArrayOf(1, 3, 2, 5, 4)
+    nums.sort()
+    nums.reverse()
+    println(nums[1])
+}
+
+
+
+//-Удалите минимальный элемент из массива
+fun main() {
+    val nums = intArrayOf(0, 3, 2, 5, 4)
+	val ans = nums.sorted().drop(1)
+    println(ans.joinToString())
+}
+
+
+//-Разделите массив на два массива: в одном только четные числа, в другом — только нечетные
+fun main() {
+    val nums = intArrayOf(1, 3, 2, 5, 4, 6, 7, 8, 9)
+    val even = mutableListOf<Int>()
+    val odd = mutableListOf<Int>()
+    for (num in nums) {
+        if (num % 2 == 0) {
+            even.add(num)
+        } else {
+            odd.add(num)
+        }
+    }
+    println(even)
+    println(odd)
+}
+
+//-Проверьте, содержит ли массив дубликаты.
+//and
+//-Найдите все элементы, которые встречаются более одного раза в массиве
+fun main() {
+    val nums = intArrayOf(2, 1, 3, 4, 5) 
+    val seen = mutableSetOf<Int>()
+    val duplicates = mutableSetOf<Int>()
+    for (num in nums) {
+        if (num in seen) {
+            duplicates.add(num) 
+        } else if (num !in duplicates) {
+            seen.add(num) 
+        }
+    }
+    println(duplicates.isNotEmpty())
+    println(duplicates)
+}
+
+
+//-Удалите последний элемент из массива
+fun main() {
+    val nums = intArrayOf(0, 3, 2, 5, 4)
+	nums.reverse()
+    val ans = nums.drop(1)
+    println(ans.reversed().joinToString())
+}
+
+
+//-Добавьте новый элемент в конец массива
+fun main() {
+    val nums = intArrayOf(0, 1, 21, 15, 14)
+    val add = 7
+    val ans = nums + add
+    println(ans.joinToString())
+}
+
+
+
+
+//-Создайте массив, в котором каждый элемент повторяется дважды
+import java.util.*
+fun main() {
+    val arr1 = intArrayOf(1, 3, 5, 7, 9)
+    val arr2 = arr1
+    val mergedArray = (arr1 + arr2).sorted().toIntArray()
+    println(Arrays.toString(mergedArray))
+}
+//-Удалите элемент из массива по заданному индексу
+fun main() {
+    val nums = intArrayOf(1, 2, 3, 4, 5)
+    val indexToRemove = 0
+    val result = nums.toMutableList()
+    result.removeAt(indexToRemove)
+    println(result.joinToString())
+    
+}
+
+//-Вставьте новый элемент на заданную позицию в массиве
+fun main() {
+    val nums = intArrayOf(1, 2, 3, 4, 5)
+    val newValue = 10
+    val indexToInsert = 0
+    val result = nums.toMutableList()
+    result.add(indexToInsert, newValue)
+    println(result.joinToString())
+}
+
+//-Преобразовать String и проверить сколько раз повторяется и следом написать количество повторений. Например: "aabbbcccc" преобразоавть в "a2b3c4"
+fun main() {
+    val s = "aabbbcccc"
+    var str = ""
+    var count = 1
+    for (i in 1 until s.length) {
+        if (s[i] == s[i - 1]) {
+            count++
+        } else {
+            str += "${s[i - 1]}$count"
+            count = 1 
+        }
+    }
+    str += "${s.last()}$count"
+    println(str)
+}
+
